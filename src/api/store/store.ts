@@ -1,49 +1,49 @@
-export const StoreConfig = {
+export const StoreConfig: any = {
   name: 'nomics-cache',
   version: 1,
   objectStoresMeta: [
     {
       store: 'tokens',
-      storeConfig: { keyPath: 'id', autoincrement: false },
+      storeConfig: { keyPath: 'id', autoincrement: true },
       storeSchema: [
         {
           name: 'name',
-          keyPath: 'name',
+          keypath: 'name',
           options: { unique: true },
         },
         {
           name: 'id',
-          keyPath: 'id',
+          keypath: 'id',
           options: { unique: true },
         },
         {
           name: 'symbol',
-          keyPath: 'symbol',
+          keypath: 'symbol',
           options: { unique: true },
         },
         {
           name: 'price',
-          keyPath: 'price',
+          keypath: 'price',
           options: { unique: false },
         },
         {
           name: 'volume',
-          keyPath: 'volume',
+          keypath: 'volume',
           options: { unique: false },
         },
         {
           name: 'priceChange',
-          keyPath: 'priceChange',
+          keypath: 'priceChange',
           options: { unique: false },
         },
         {
           name: 'logo',
-          keyPath: 'logo',
+          keypath: 'logo',
           options: { unique: false },
         },
         {
           name: 'time',
-          keyPath: 'time',
+          keypath: 'time',
           options: { unique: false },
         },
       ],

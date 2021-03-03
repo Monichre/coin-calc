@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
-import Menu from './Menu'
-import Heading from './Heading'
-import { Ticker } from './Content'
-import Footer from './Footer'
-import DatePicker from 'react-date-picker'
-import { Row, Card, Select, Link, Button, Col, Dot, Tag } from '@geist-ui/react'
+import { Ticker } from './Ticker'
+import {
+  Row,
+  Card,
+  Select,
+  Link,
+  Button,
+  Col,
+  Dot,
+  Tag,
+  Grid,
+} from '@geist-ui/react'
 import { GeistUIThemes, Avatar, Text } from '@geist-ui/react'
 import makeStyles from '../makeStyles'
 import * as Icons from 'react-feather'
 import { CoinProfitForm } from './CoinProfitForm/CoinProfitForm'
-
+// import EventListItem from './EventListItem'
+import InfoCard from './InfoCard'
+import { CSVLink } from 'react-csv'
 // interface Props {
 //   username: string;
 //   avatar: string;
@@ -132,17 +140,12 @@ const Dashboard = ({ tokens, tickerTokens }: any) => {
 
   return (
     <>
-      <Menu />
-      <Heading />
-      <Card shadow className={classes.card}>
+      <Grid xs={8}>
+        <Ticker tickerTokens={tickerTokens} />
+      </Grid>
+      <Grid xs={16}>
         <CoinProfitForm tokens={tokens} />
-        <Card.Footer className={classes.footer}>
-          <Icons.GitHub size={14} />
-          <Text className={classes.repo}>meh</Text>
-        </Card.Footer>
-      </Card>
-      <Ticker tickerTokens={tickerTokens} />
-      <Footer />
+      </Grid>
     </>
   )
 }

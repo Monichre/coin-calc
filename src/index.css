@@ -1,13 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.react-datepicker__input-container input {
+  padding: 0 1.25rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  min-width: min-content;
+  width: auto;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  text-transform: capitalize;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-transition: background-color 200ms ease 0ms, box-shadow 200ms ease 0ms,
+    border 200ms ease 0ms, color 200ms ease 0ms;
+  transition: background-color 200ms ease 0ms, box-shadow 200ms ease 0ms,
+    border 200ms ease 0ms, color 200ms ease 0ms;
+  position: relative;
+  overflow: hidden;
+  color: #888;
+  background-color: #000;
+  border: 1px solid #333;
+  cursor: pointer;
+  pointer-events: auto;
 }

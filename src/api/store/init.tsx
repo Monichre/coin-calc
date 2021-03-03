@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import { getNomicsTicker } from '../crypto/nomics.api'
 
-import { initDB, useIndexedDB } from 'react-indexed-db'
-import { StoreConfig } from './store'
+import { useIndexedDB } from 'react-indexed-db'
 
 export const chunk = (arr: Array<any>, size: number) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
@@ -44,23 +43,34 @@ const handleResponse = (res) => {
 }
 
 export const useInit = () => {
-  initDB(StoreConfig)
-  const { add } = useIndexedDB('nomics-cache')
+  const db = useIndexedDB(`tokens`) // nomics-cache'
 
   const [tokens, setTokens]: any = useState([])
 
   useEffect(() => {
-    const getStore = async () => {
-      const res = await getNomicsTicker()
+    if (db && !tokens.length) {
+      const { getAll, add } = db
+      const getStore = async () => {
+        const res = await getNomicsTicker()
 
-      const { tokenData } = formatTokenData(res)
-      console.log('tokenData: ', tokenData)
-      tokenData.map((token) => {
-        add(token)
+        const { tokenData } = formatTokenData(res)
+        console.log('tokenData: ', tokenData)
+        tokenData.map((token) => {
+          add(token)
+        })
+        setTokens(tokenData)
+      }
+
+      getAll().then((res) => {
+        console.log('res: ', res)
+        if (res?.length) {
+          setTokens(res)
+        } else {
+          getStore()
+        }
       })
-      setTokens(tokenData)
     }
-    getStore()
-  }, [])
+  }, [db, tokens])
+
   return { tokens }
 }
